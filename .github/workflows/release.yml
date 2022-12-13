@@ -10,7 +10,7 @@ on:
 
 jobs:
   release:
-    if: ${{ github.repository_owner == 't3-oss' }}
+    if: ${{ github.repository_owner == 'basementstudio' }}
     name: Create a PR for release workflow
     runs-on: ubuntu-latest
     steps:
@@ -22,10 +22,10 @@ jobs:
       - name: Use PNPM
         uses: pnpm/action-setup@v2.2.4
 
-      - name: Use Node.js 18
+      - name: Use Node.js 16
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
           cache: "pnpm"
 
       - name: Install NPM Dependencies
