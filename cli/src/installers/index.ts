@@ -2,13 +2,15 @@ import type { PackageManager } from "~/utils/getUserPkgManager.js";
 import { envVariablesInstaller } from "~/installers/envVars.js";
 import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { prismaInstaller } from "~/installers/prisma.js";
+import { threeInstaller } from "~/installers/three.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
 import { trpcInstaller } from "~/installers/trpc.js";
 
 // Turning this into a const allows the list to be iterated over for programatically creating prompt options
-// Should increase extensability in the future
+// Should increase extendability in the future
 export const availablePackages = [
   "nextAuth",
+  "three",
   "prisma",
   "tailwind",
   "trpc",
@@ -24,6 +26,13 @@ export const dependencyVersionMap = {
   // NextAuth.js
   "next-auth": "^4.18.3",
   "@next-auth/prisma-adapter": "^1.0.5",
+
+  // Three JS
+  three: "^0.146.0",
+  "@react-three/drei": "^9.45.0",
+  "@react-three/fiber": "^8.9.1",
+  "@react-three/postprocessing": "^2.7.0",
+  "@react-three/rapier": "^0.10.0",
 
   // Prisma
   prisma: "^4.5.0",
@@ -73,6 +82,10 @@ export const buildPkgInstallerMap = (
   prisma: {
     inUse: packages.includes("prisma"),
     installer: prismaInstaller,
+  },
+  three: {
+    inUse: packages.includes("three"),
+    installer: threeInstaller,
   },
   tailwind: {
     inUse: packages.includes("tailwind"),
