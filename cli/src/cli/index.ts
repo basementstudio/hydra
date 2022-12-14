@@ -16,7 +16,6 @@ interface CliFlags {
   CI: boolean /** @internal - used in CI */;
   tailwind: boolean /** @internal - used in CI */;
   trpc: boolean /** @internal - used in CI */;
-  prisma: boolean /** @internal - used in CI */;
   nextAuth: boolean /** @internal - used in CI */;
 }
 
@@ -28,7 +27,7 @@ interface CliResults {
 
 const defaultOptions: CliResults = {
   appName: DEFAULT_APP_NAME,
-  packages: ["nextAuth", "prisma", "tailwind", "trpc"],
+  packages: ["nextAuth", "tailwind", "trpc", "sass"],
   flags: {
     noGit: false,
     noInstall: false,
@@ -36,7 +35,6 @@ const defaultOptions: CliResults = {
     CI: false,
     tailwind: false,
     trpc: false,
-    prisma: false,
     nextAuth: false,
   },
 };
@@ -98,15 +96,6 @@ export const runCli = async () => {
      * Used in conjunction with `--CI` to skip prompting
      */
     .option(
-      "--prisma [boolean]",
-      "Experimental: Boolean value if we should install Prisma. Must be used in conjunction with `--CI`.",
-      (value) => !!value && value !== "false",
-    )
-    /**
-     * @experimental - used for CI E2E tests
-     * Used in conjunction with `--CI` to skip prompting
-     */
-    .option(
       "--trpc [boolean]",
       "Experimental: Boolean value if we should install tRPC. Must be used in conjunction with `--CI`.",
       (value) => !!value && value !== "false",
@@ -150,7 +139,6 @@ export const runCli = async () => {
     cliResults.packages = [];
     if (cliResults.flags.trpc) cliResults.packages.push("trpc");
     if (cliResults.flags.tailwind) cliResults.packages.push("tailwind");
-    if (cliResults.flags.prisma) cliResults.packages.push("prisma");
     if (cliResults.flags.nextAuth) cliResults.packages.push("nextAuth");
   }
 
