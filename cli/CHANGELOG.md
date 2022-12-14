@@ -1,5 +1,11 @@
 # create-bsmnt-app
 
+## 1.0.1
+
+### Patch Changes
+
+- [`0a8c0d4`](https://github.com/basementstudio/hydra/commit/0a8c0d4cd01aaa28bc396aa800017927714f0184) Thanks [@justkahdri](https://github.com/justkahdri)! - Add three.js to available packages
+
 ## 1.0.0
 
 ### Major Changes
