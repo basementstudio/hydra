@@ -19,7 +19,6 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   });
 
   const usingAuth = packages?.nextAuth.inUse;
-  const usingPrisma = packages?.prisma.inUse;
 
   const trpcAssetDir = path.join(PKG_ROOT, "template/addons/trpc");
 
@@ -33,14 +32,7 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
   const serverUtilSrc = path.join(trpcAssetDir, serverUtilFile);
   const serverUtilDest = path.join(projectDir, "src/server/trpc/trpc.ts");
 
-  const contextFile =
-    usingAuth && usingPrisma
-      ? "auth-prisma-context.ts"
-      : usingAuth && !usingPrisma
-      ? "auth-context.ts"
-      : !usingAuth && usingPrisma
-      ? "prisma-context.ts"
-      : "base-context.ts";
+  const contextFile = usingAuth ? "auth-context.ts" : "base-context.ts";
   const contextSrc = path.join(trpcAssetDir, contextFile);
   const contextDest = path.join(projectDir, "src/server/trpc/context.ts");
 
@@ -57,9 +49,7 @@ export const trpcInstaller: Installer = ({ projectDir, packages }) => {
     "src/server/trpc/router/_app.ts",
   );
 
-  const exampleRouterFile = usingPrisma
-    ? "example-prisma-router.ts"
-    : "example-router.ts";
+  const exampleRouterFile = "example-router.ts";
   const exampleRouterSrc = path.join(trpcAssetDir, exampleRouterFile);
   const exampleRouterDest = path.join(
     projectDir,

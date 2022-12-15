@@ -1,7 +1,6 @@
 import type { PackageManager } from "~/utils/getUserPkgManager.js";
 import { envVariablesInstaller } from "~/installers/envVars.js";
 import { nextAuthInstaller } from "~/installers/nextAuth.js";
-import { prismaInstaller } from "~/installers/prisma.js";
 import { threeInstaller } from "~/installers/three.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
 import { trpcInstaller } from "~/installers/trpc.js";
@@ -11,7 +10,6 @@ import { trpcInstaller } from "~/installers/trpc.js";
 export const availablePackages = [
   "nextAuth",
   "three",
-  "prisma",
   "tailwind",
   "trpc",
   "envVariables",
@@ -25,7 +23,6 @@ export type AvailablePackages = typeof availablePackages[number];
 export const dependencyVersionMap = {
   // NextAuth.js
   "next-auth": "^4.18.3",
-  "@next-auth/prisma-adapter": "^1.0.5",
 
   // Three JS
   three: "^0.146.0",
@@ -33,10 +30,6 @@ export const dependencyVersionMap = {
   "@react-three/fiber": "^8.9.1",
   "@react-three/postprocessing": "^2.7.0",
   "@react-three/rapier": "^0.10.0",
-
-  // Prisma
-  prisma: "^4.5.0",
-  "@prisma/client": "^4.5.0",
 
   // TailwindCSS
   tailwindcss: "^3.2.0",
@@ -78,10 +71,6 @@ export const buildPkgInstallerMap = (
   nextAuth: {
     inUse: packages.includes("nextAuth"),
     installer: nextAuthInstaller,
-  },
-  prisma: {
-    inUse: packages.includes("prisma"),
-    installer: prismaInstaller,
   },
   three: {
     inUse: packages.includes("three"),

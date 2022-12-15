@@ -5,7 +5,6 @@ import { PKG_ROOT } from "~/consts.js";
 
 export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   const usingAuth = packages?.nextAuth.inUse;
-  const usingPrisma = packages?.prisma.inUse;
 
   const envAssetDir = path.join(PKG_ROOT, "template/addons/env");
 
@@ -13,25 +12,8 @@ export const envVariablesInstaller: Installer = ({ projectDir, packages }) => {
   let envContent =
     "# When adding additional env variables, the schema in /env/schema.mjs should be updated accordingly\n";
 
-  switch (true) {
-    case usingAuth && usingPrisma:
-      envSchemaFile = "auth-prisma-schema.mjs";
-      break;
-    case usingAuth:
-      envSchemaFile = "auth-schema.mjs";
-      break;
-    case usingPrisma:
-      envSchemaFile = "prisma-schema.mjs";
-      break;
-  }
-
-  if (usingPrisma) {
-    envContent += `
-# Prisma
-DATABASE_URL=file:./db.sqlite
-`;
-  }
   if (usingAuth) {
+    envSchemaFile = "auth-schema.mjs";
     envContent += `
 # Next Auth
 # You can generate the secret via 'openssl rand -base64 32' on Linux

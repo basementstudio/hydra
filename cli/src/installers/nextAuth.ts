@@ -4,9 +4,8 @@ import fs from "fs-extra";
 import { PKG_ROOT } from "~/consts.js";
 import { addPackageDependency } from "~/utils/addPackageDependency.js";
 
-export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
+export const nextAuthInstaller: Installer = ({ projectDir }) => {
   const deps: AvailableDependencies[] = ["next-auth"];
-  if (packages?.prisma.inUse) deps.push("@next-auth/prisma-adapter");
 
   addPackageDependency({
     projectDir,
@@ -16,10 +15,7 @@ export const nextAuthInstaller: Installer = ({ projectDir, packages }) => {
 
   const nextAuthAssetDir = path.join(PKG_ROOT, "template/addons/next-auth");
 
-  const apiHandlerSrc = path.join(
-    nextAuthAssetDir,
-    packages?.prisma.inUse ? "api-handler-prisma.ts" : "api-handler.ts",
-  );
+  const apiHandlerSrc = path.join(nextAuthAssetDir, "api-handler.ts");
   const apiHandlerDest = path.join(
     projectDir,
     "src/pages/api/auth/[...nextauth].ts",

@@ -47,7 +47,6 @@ The _"T3 Stack"_ is a web development stack made by [Theo](https://twitter.com/t
 - [tRPC](https://trpc.io)
 - [Tailwind CSS](https://tailwindcss.com)
 - [TypeScript](https://typescriptlang.org)
-- [Prisma](https://prisma.io)
 - [NextAuth.js](https://next-auth.js.org)
 
 ### So... what is `create-t3-app`? A template?
