@@ -1,5 +1,11 @@
 # create-bsmnt-app
 
+## 1.0.2
+
+### Patch Changes
+
+- [`4acff78`](https://github.com/basementstudio/hydra/commit/4acff788ce76ec4acb70b4e3274f3933f3ec1f1f) Thanks [@justkahdri](https://github.com/justkahdri)! - Add `next-typescript` template files to the `create-bsmnt-app` starter.
+
 ## 1.0.1
 
 ### Patch Changes
