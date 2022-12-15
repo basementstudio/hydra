@@ -4,7 +4,6 @@ import { nextAuthInstaller } from "~/installers/nextAuth.js";
 import { threeInstaller } from "~/installers/three.js";
 import { tailwindInstaller } from "~/installers/tailwind.js";
 import { trpcInstaller } from "~/installers/trpc.js";
-import { sassInstaller } from "./sass.js";
 
 // Turning this into a const allows the list to be iterated over for programatically creating prompt options
 // Should increase extendability in the future
@@ -14,7 +13,6 @@ export const availablePackages = [
   "tailwind",
   "trpc",
   "envVariables",
-  "sass",
 ] as const;
 export type AvailablePackages = typeof availablePackages[number];
 
@@ -33,10 +31,6 @@ export const dependencyVersionMap = {
   "@react-three/fiber": "^8.9.1",
   "@react-three/postprocessing": "^2.7.0",
   "@react-three/rapier": "^0.10.0",
-
-  // SASS
-  sass: "1.49.9",
-  "stylelint-config-standard-scss": "^2.0.1",
 
   // TailwindCSS
   tailwindcss: "^3.2.0",
@@ -82,10 +76,6 @@ export const buildPkgInstallerMap = (
   three: {
     inUse: packages.includes("three"),
     installer: threeInstaller,
-  },
-  sass: {
-    inUse: packages.includes("sass"),
-    installer: sassInstaller,
   },
   tailwind: {
     inUse: packages.includes("tailwind"),

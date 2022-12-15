@@ -27,7 +27,7 @@ interface CliResults {
 
 const defaultOptions: CliResults = {
   appName: DEFAULT_APP_NAME,
-  packages: ["nextAuth", "tailwind", "trpc", "sass"],
+  packages: ["nextAuth", "tailwind", "trpc"],
   flags: {
     noGit: false,
     noInstall: false,
